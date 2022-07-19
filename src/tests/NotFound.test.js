@@ -5,8 +5,6 @@ import App from '../App';
 
 const image = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
 
-afterEach((() => jest.clearAllMocks));
-
 describe('4- Testando o componente <NotFound.js />', () => {
   test('Teste se a página contém o texto: Page requested not found Crying emoji', () => {
     const { history } = renderWithRouter(<App />);
