@@ -22,9 +22,11 @@ describe('3- Testando o componente <FavoritePokemons.js />', () => {
     pokedexService.readFavoritePokemonIds.mockReturnValue([pikachu, charmander]);
     const { history } = renderWithRouter(<App />);
     history.push('/favorites');
-    const name1 = screen.getByText('Pikachu');
-    const name2 = screen.getByText('Charmander');
-    expect(name1).toBeInTheDocument();
-    expect(name2).toBeInTheDocument();
+    const pokemonName = screen.getAllByTestId('pokemon-name');
+    expect(pokemonName).toHaveLength(2);
+    expect(pokemonName[0]).toBeInTheDocument();
+    expect(pokemonName[0]).toHaveTextContent('Pikachu');
+    expect(pokemonName[1]).toBeInTheDocument();
+    expect(pokemonName[1]).toHaveTextContent('Charmander');
   });
 });
