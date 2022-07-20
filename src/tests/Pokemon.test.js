@@ -46,9 +46,11 @@ describe('6- Testando o componente <Pokemon.js />', () => {
     userEvent.click(pokemonDetails);
     const favInput = screen.getByLabelText('Pokémon favoritado?');
     expect(favInput).toBeInTheDocument();
+    const favImageOff = screen.queryByAltText('Pikachu is marked as favorite');
+    expect(favImageOff).not.toBeInTheDocument();
     userEvent.click(favInput);
-    const favImage = screen.getByAltText('Pikachu is marked as favorite');
-    expect(favImage).toBeInTheDocument();
-    expect(favImage).toHaveAttribute('src', '/star-icon.svg');
+    const favImageOn = screen.queryByAltText('Pikachu is marked as favorite');
+    expect(favImageOn).toBeInTheDocument();
+    expect(favImageOn).toHaveAttribute('src', '/star-icon.svg');
   });
 });
